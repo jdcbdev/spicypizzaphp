@@ -46,7 +46,7 @@ nav li a:hover{
     color: rgba(255, 0, 0, 0.242);
 }
 
-section#order .order-image{
+section#banner .banner-image{
     display: flex;
     flex-direction: column;
     height: calc(100vh - 65px);
@@ -58,30 +58,30 @@ section#order .order-image{
     padding: 40px;
 }
 
-.order-image h2{
+.text-first-pizza{
     font-size: 2.2em;
     margin: 0 0 10px 0;
     color: white;
 }
 
-.order-image h4{
+.text-spicy-flavors{
     font-size: 2.5em;
     color: white;
     margin-bottom: 30px;
 }
 
-.order-image h4 span{
+.text-spicy-flavors span{
     color: rgba(190, 3, 3, 0.815);
 }
 
-.button-lg{
+.btn-order{
     width: 150px;
     border: none;
     height: 50px;
     background-color: white;
 }
 
-.button-lg a{
+.btn-order a{
     padding: 8px;
     text-decoration: none;
     color: #000;

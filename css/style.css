@@ -1,89 +1,96 @@
 *{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1em;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+}
+
+.brand-color{
+    color: #D80032;
+}
+
+.brand-bg-color{
+    background-color: #D80032;
+    color: white;
+}
+
+.brand-bg-color:hover{
+    background-color: #F78CA2;
+    color: white;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: #F78CA2;
+    font-size: 18px;
+}
+
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link{
+    color: #D80032;
+}
+
+.navbar-light .navbar-nav .nav-link.active:hover, .navbar-light .navbar-nav .nav-link:hover{
+    color: white;
+    background-color: #F78CA2;
 }
 
 header{
-    position: sticky;
-    top: 0;
+    box-shadow: 2px 2px 4px #F78CA2;
 }
 
-nav{
+.banner{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.1);
-    background-color: #fff;
-    width: 100%;
-    overflow: hidden;
-}
-
-nav ul{
-    display: flex;
-    list-style: none;
-    margin-right: 10px;
-}
-
-.brand-logo{
-    margin-left: 10px;
-    font-size: 1.3em;
-}
-
-nav a{
-    padding: 8px;
-}
-
-nav a:link, nav a:visited, nav a:active{
-    color: black;
-    text-decoration: none;
-}
-
-nav li a:hover{
-    color: rgba(255, 0, 0, 0.242);
-}
-
-section#banner .banner-image{
-    display: flex;
-    flex-direction: column;
-    height: calc(100vh - 65px);
-    justify-content: center;
-    background-image: url('../img/image-1.jpg');
-    background-position: center;
+    background: linear-gradient(#F78CA2, rgba(0, 0, 0, 0.01)), url('../img/newback2.jpg');
+    background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 40px;
+    height: calc(100vh - 86px);
+    flex-direction: column;
+    justify-content: center;
 }
 
-.text-first-pizza{
-    font-size: 2.2em;
-    margin: 0 0 10px 0;
-    color: white;
+span.spicy{
+    color: #D80032;
 }
 
-.text-spicy-flavors{
-    font-size: 2.5em;
-    color: white;
-    margin-bottom: 30px;
+span.tasty{
+    color: #D80032;
 }
 
-.text-spicy-flavors span{
-    color: rgba(190, 3, 3, 0.815);
-}
-
-.btn-order{
-    width: 150px;
-    border: none;
-    height: 50px;
+.btn-order, .btn-order:active, .btn-order:visited{
+    width: fit-content;
     background-color: white;
+    border: 1px solid #D80032;
+    color: #D80032;
+    border-radius: 15px;
 }
 
-.btn-order a{
-    padding: 8px;
-    text-decoration: none;
-    color: #000;
-    font-size: 1.2em;
+.btn-order:hover{
+    background-color: #D80032;
+    border: 1px solid #D80032;
+    color: white;
+}
+
+.fas.fa-star{
+    color: #E9B824;
+}
+
+.add-to-cart{
+    position: relative;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+.btn-add-to-cart{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #D80032;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    display: none;
 }

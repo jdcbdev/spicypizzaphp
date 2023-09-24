@@ -4,29 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="" class="brand-logo">Spicy Pizza</a>
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Menu</a></li>
-                <li><a href="">Sign up</a></li>
-                <li><a href="">Login</a></li>
-                <li><a href="">Cart</a></li>
-            </ul>
-        </nav>
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="./img/logo1.png" alt="" srcset=""></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-0">
+                        <li class="nav-item">
+                            <a class="nav-link active"href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Cart</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </nav>
     </header>
     <main>
-        <section id="banner">
-            <div class="banner-image">
-                <h2 class="text-first-pizza">The First Spicy Pizza in Town</h2>
-                <h4 class="text-spicy-flavors"><span>Spicy Flavors.</span> Tasty Pizza.</h4>
-                <button class="btn-order"><a href="">Order Now</a></button>
+        <section class="banner p-5">
+            <h2>The First Spicy Pizza in Town</h2>
+            <h2><span class="spicy">Spicy Flavors.</span> <span class="tasty">Tasty Pizza.</span></h2>
+            <a href="#" class="btn btn-primary btn-lg btn-order mt-3">Order Now</a>
+        </section>
+        <section class="container best-seller my-4">
+            <div class="text-center mb-4">
+                <h2>- Best Seller -</h2>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="add-to-cart">
+                        <img src="./img/bestseller/1.jpg" class="img-fluid" alt="">
+                        <button type="button" class="btn btn-primary btn-add-to-cart brand-bg-color">Add to Cart</button>
+                    </a>
+                    <p class="text-center my-1">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </p>
+                    <p class="text-center my-1">Product Name</p>
+                    <p class="text-center my-1">Product Price</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="add-to-cart">
+                        <img src="./img/bestseller/2.jpg" class="img-fluid" alt="">
+                        <button type="button" class="btn btn-primary btn-add-to-cart brand-bg-color">Add to Cart</button>
+                    </a>
+                    <p class="text-center my-1">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </p>
+                    <p class="text-center my-1">Product Name</p>
+                    <p class="text-center my-1">Product Price</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="add-to-cart">
+                        <img src="./img/bestseller/3.jpg" class="img-fluid" alt="">
+                        <button type="button" class="btn btn-primary btn-add-to-cart brand-bg-color">Add to Cart</button>
+                    </a>
+                    <p class="text-center my-1">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </p>
+                    <p class="text-center my-1">Product Name</p>
+                    <p class="text-center my-1">Product Price</p>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="add-to-cart">
+                        <img src="./img/bestseller/4.jpg" class="img-fluid" alt="">
+                        <button type="button" class="btn btn-primary btn-add-to-cart brand-bg-color">Add to Cart</button>
+                    </a>
+                    <p class="text-center my-1">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </p>
+                    <p class="text-center my-1">Product Name</p>
+                    <p class="text-center my-1">Product Price</p>
+                </div>
             </div>
         </section>
+        <section class="slogan-banner">
+            <img src="./img/banner/1.jpg" alt="" class="img-fluid">
+        </section>
+        </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $('.add-to-cart').hover(function(){
+            $(this).find('.btn-add-to-cart').show();
+        },
+        function(){
+            $(this).find('.btn-add-to-cart').hide();
+        });
+    </script>
 </body>
 </html>

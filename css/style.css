@@ -37,7 +37,7 @@ header{
 
 .banner{
     display: flex;
-    background: linear-gradient(#F78CA2, rgba(0, 0, 0, 0.01)), url('../img/newback2.jpg');
+    background: linear-gradient(#F78CA2, rgba(0, 0, 0, 0.1)), url('../img/newback2.jpg');
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -68,7 +68,7 @@ span.tasty{
     color: white;
 }
 
-.fas.fa-star{
+.fa.fa-star{
     color: #E9B824;
 }
 
@@ -79,13 +79,14 @@ span.tasty{
     display: block;
 }
 
-.btn-add-to-cart{
+.btn-add-to-cart, .btn-add-to-cart:focus, .btn-add-to-cart:active{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: #D80032;
+    border-color: #F78CA2;
     color: white;
     font-size: 16px;
     padding: 12px 24px;

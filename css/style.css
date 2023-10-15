@@ -4,12 +4,12 @@
 }
 
 .brand-color{
-    color: #D80032;
+    color: #D80032 !important;
 }
 
 .brand-bg-color{
-    background-color: #D80032;
-    color: white;
+    background-color: #D80032 !important;
+    color: white !important;
 }
 
 .brand-bg-color:hover{
@@ -17,21 +17,21 @@
     color: white;
 }
 
-.navbar-light .navbar-nav .nav-link{
+.landing-page .navbar-light .navbar-nav .nav-link{
     color: #F78CA2;
     font-size: 18px;
 }
 
-.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link{
+.landing-page .navbar-light .navbar-nav .nav-link.active, .landing-page .navbar-light .navbar-nav .show>.nav-link{
     color: #D80032;
 }
 
-.navbar-light .navbar-nav .nav-link.active:hover, .navbar-light .navbar-nav .nav-link:hover{
+.landing-page .navbar-light .navbar-nav .nav-link.active:hover, .landing-page .navbar-light .navbar-nav .nav-link:hover{
     color: white;
     background-color: #F78CA2;
 }
 
-header{
+header.landing-page{
     box-shadow: 2px 2px 4px #F78CA2;
 }
 
@@ -94,4 +94,65 @@ span.tasty{
     cursor: pointer;
     border-radius: 5px;
     display: none;
+}
+
+.dropdown-profile.dropdown-menu[data-bs-popper]{
+    right: 0;
+    left: auto;
+}
+
+.color-white{
+    color: white !important;
+}
+
+.admin-header{
+    height: 55px;
+    display: flex;
+    align-items: center;
+}
+
+#sidebarMenu .fa{
+    width: 20px;
+}
+
+.sidebar .nav-link.active, .sidebar .nav-link:hover{
+    color: #D80032;
+}
+
+.card-body .fa{
+    color: #D80032; 
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: #333;
+}
+  
+.sidebar .nav-link .feather {
+    margin-right: 4px;
+    color: #727272;
+}
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 48px 0 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+  
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.card.admin-rounded{
+    border-radius: 15px;
 }

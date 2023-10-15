@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <header class="sticky-top">
+    <header class="sticky-top landing-page">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><img src="./img/logo1.png" alt="" srcset=""></a>
@@ -122,17 +122,6 @@
     <!-- This is how we add bootstrap and jquery locally. -->
     <script src="./vendor/bootstrap-5.0.2/js/bootstrap.bundle.min.js"></script>
     <script src="./vendor/jquery-3.7.1/jquery.min.js"></script>
-    <script>
-        // When a user hovers over an element with the class "add-to-cart"
-        $('.add-to-cart').hover(function(){
-            // Find the child element with the class "btn-add-to-cart" inside the hovered element
-            $(this).find('.btn-add-to-cart').show(); // Show the "btn-add-to-cart" element
-        },
-        function(){
-            // When the user's mouse pointer moves away from the element
-            // Find the child element with the class "btn-add-to-cart" inside the hovered element
-            $(this).find('.btn-add-to-cart').hide(); // Hide the "btn-add-to-cart" element
-        });
-    </script>
+    <script src="./js/landing-page.js"></script>
 </body>
 </html>

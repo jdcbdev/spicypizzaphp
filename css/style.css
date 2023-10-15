@@ -1,6 +1,7 @@
 *{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1em;
+    box-sizing: border-box;
 }
 
 .brand-color{
@@ -155,4 +156,36 @@ span.tasty{
 
 .card.admin-rounded{
     border-radius: 15px;
+}
+
+.btn-add{
+    border-radius: 50%;
+    border-color: #D80032;
+    background-color: white;
+    margin-left: 10px;
+    color: #D80032;
+}
+
+.btn-add:hover{
+    background-color: #F78CA2;
+    border-color: #D80032;
+}
+
+.page-item.active .page-link {
+    background-color: #D80032;
+    border-color: #D80032;
+}
+
+.page-link{
+    color: #D80032;
+}
+
+.page-link:hover{
+    color: #F78CA2;
+}
+
+@media screen and (min-width: 992px) {
+    .search-keyword{
+        max-width: 300px;
+    }
 }

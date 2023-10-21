@@ -53,8 +53,8 @@ $(document).ready(function(){
         return input;
     }
 
-    $('select#staff-status').on('change', function(e){
+    $('select#staff-role').on('change', function(e){
         var status = $(this).val();
-        dataTable.columns([2]).search(status).draw();
+        dataTable.columns([4]).search(status).draw();
     });
 })

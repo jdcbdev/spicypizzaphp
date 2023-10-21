@@ -1,100 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <!-- This is how we add bootstrap, fontawesome and jquery locally. -->
-    <link href="../vendor/bootstrap-5.0.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../vendor/font-awesome-4.7.0/css/font-awesome.min.css"/>
-    <!-- Your custome css goes here -->
-    <link rel="stylesheet" href="../css/style.css">
-</head>
+<?php
+    $title = 'Dashboard';
+    require_once('../include/head.php');
+?>
 <body>
-    <header class="navbar navbar-dark sticky-top brand-bg-color flex-md-nowrap p-0 admin">
-        <div class="col-md-3 col-lg-2 admin-header">
-            <a class="navbar-brand me-0 px-3 color-white" href="#">Spicy Pizza</a>
-        </div>
-        <button class="navbar-toggler d-md-none collapsed me-2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <nav class="navbar navbar-expand-md navbar-dark d-none d-md-block">
-            <div class="container-fluid">
-                <div class="navbar-collapse offcanvas-collapse">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle color-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../img/staff/ballaho.png" class="rounded-circle me-1" alt="User Image" width="30px" height="30px"">
-                                User Name
-                            </a>
-                            <ul class="dropdown-menu dropdown-profile" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <?php
+        require_once('../include/header.admin.php')
+    ?>
     <main>
         <div class="container-fluid">
             <div class="row">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
-                    <div class="position-sticky pt-3">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">
-                                    <i class="fa fa-tachometer" aria-hidden="true"></i>
-                                    Dashboard
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fa fa-file-text" aria-hidden="true"></i>
-                                    Orders
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    Products
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fa fa-users" aria-hidden="true"></i>
-                                    Customers
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
-                                    Reports
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="staff.html">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    Staff
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fa fa-cog" aria-hidden="true"></i>
-                                    Settings
-                                </a>
-                            </li>
-                            <hr class="d-lg-none">
-                            <li class="nav-item d-lg-none">
-                                <a class="nav-link" href="#">
-                                    <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                    Logout
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                <?php
+                    require_once('../include/sidepanel.php')
+                ?>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light">
                     <h1 class="h3 brand-color pt-3">Overview</h1>
                     <div class="row py-2 py-lg-3">
@@ -248,8 +167,9 @@
             </div>
         </div>
     </main>
-    <script src="../vendor/bootstrap-5.0.2/js/bootstrap.bundle.min.js"></script>
-    <script src="../vendor/jquery-3.7.1/jquery.min.js"></script>
+    <?php
+        require_once('../include/js.php')
+    ?>
     <script src="../js/dashboard.js"></script>
 </body>
 </html>

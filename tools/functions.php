@@ -1,7 +1,7 @@
 <?php
     
     function validate_fn($POST){
-        $fn = htmlentities($POST['firstName']);
+        $fn = htmlentities($POST['firstname']);
         if(strlen(trim($fn))<1){
             return false;
         }else{
@@ -10,7 +10,7 @@
     }
 
     function validate_ln($POST){
-        $ln = htmlentities($POST['lastName']);
+        $ln = htmlentities($POST['lastname']);
         if(strlen(trim($ln))<1){
             return false;
         }else{
@@ -50,7 +50,7 @@
 
     function validate_cpw($POST){
         $pw = htmlentities($POST['password']);
-        $cpw = htmlentities($POST['confirmPassword']);
+        $cpw = htmlentities($POST['confirmpassword']);
         if(strcmp($pw, $cpw) == 0){
             return true;
         }else{

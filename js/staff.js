@@ -53,13 +53,45 @@ $(document).ready(function(){
         return input;
     }
 
-    $('select#staff-role').on('change', function(e){
+    $('.table-responsive select#staff-role').on('change', function(e){
         var status = $(this).val();
         dataTable.columns([2]).search(status).draw();
     });
 
-    $('select#staff-status').on('change', function(e){
+    $('.table-responsive select#staff-status').on('change', function(e){
         var status = $(this).val();
         dataTable.columns([4]).search(status).draw();
     });
+
+    $("#addStaffButton").click(function(e) {
+        e.preventDefault();
+
+        // Collect form data
+        var formData = {
+            firstname: $("#firstname").val(),
+            lastname: $("#lastname").val(),
+            role: $("#role").val(),
+            email: $("#email").val(),
+            password: $("#password").val(),
+            status: $("input[name='status']:checked").val()
+        };
+
+        // Send AJAX request
+        $.ajax({
+            type: "POST",
+            url: "add_staff_ajax.php", // PHP script to handle the request
+            data: formData,
+            success: function(response) {
+                if (response === "success") {
+                    // Close the modal
+                    $("#addStaffModal").modal("hide");
+                    // Perform any other actions (e.g., updating the page)
+                } else {
+                    alert("Failed to add staff.");
+                }
+            }
+        });
+    });
+
+    
 })

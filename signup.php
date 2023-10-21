@@ -17,10 +17,10 @@
                     <h2 class="h6 mb-3">Sign up to order your favorite pizza.</h2>
                     <form action="" method="post">
                         <div class="mb-3">
-                            <label for="firstName" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName" value="<?php if(isset($_POST['firstName'])){ echo $_POST['firstName']; } ?>">
+                            <label for="firstname" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstname" name="firstname" value="<?php if(isset($_POST['firstname'])){ echo $_POST['firstname']; } ?>">
                             <?php
-                                if(isset($_POST['firstName']) && !validate_fn($_POST)){
+                                if(isset($_POST['firstname']) && !validate_fn($_POST)){
                             ?>
                                     <p class="text-danger my-1">Please enter a valid first name</p>
                             <?php
@@ -28,10 +28,10 @@
                             ?>
                         </div>
                         <div class="mb-3">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName" value="<?php if(isset($_POST['lastName'])){ echo $_POST['lastName']; } ?>">
+                            <label for="lastname" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" name="lastname" value="<?php if(isset($_POST['lastname'])){ echo $_POST['lastname']; } ?>">
                             <?php
-                                if(isset($_POST['lastName']) && !validate_ln($_POST)){
+                                if(isset($_POST['lastname']) && !validate_ln($_POST)){
                             ?>
                                     <p class="text-danger my-1">Please enter a valid last name</p>
                             <?php
@@ -61,10 +61,10 @@
                             ?>
                         </div>
                         <div class="mb-3">
-                            <label for="confirmPassword" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" value="<?php if(isset($_POST['confirmPassword'])){ echo $_POST['confirmPassword']; } ?>">
+                            <label for="confirmpassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" value="<?php if(isset($_POST['confirmpassword'])){ echo $_POST['confirmpassword']; } ?>">
                             <?php
-                                if(isset($_POST['password']) && isset($_POST['confirmPassword']) && !validate_cpw($_POST)){
+                                if(isset($_POST['password']) && isset($_POST['confirmpassword']) && !validate_cpw($_POST)){
                             ?>
                                     <p class="text-danger my-1">Your confirm password didn't match</p>
                             <?php

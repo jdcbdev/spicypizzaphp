@@ -40,7 +40,7 @@
                                     <input type="text" name="keyword" id="keyword" placeholder="Search Staff" class="form-control">
                                     <button class="btn btn-outline-secondary brand-bg-color" type="button"><i class="fa fa-search color-white" aria-hidden="true"></i></button>
                                 </div>
-                                <button class="btn btn-outline-secondary btn-add" type="button"><i class="fa fa-plus brand-color" aria-hidden="true"></i></button>
+                                <button class="btn btn-outline-secondary btn-add" type="button" data-bs-toggle="modal" data-bs-target="#addStaffModal"><i class="fa fa-plus brand-color" aria-hidden="true"></i></button>
                             </div>
                         </div>
                         <table id="staff" class="table table-striped table-sm">
@@ -56,83 +56,24 @@
                             </thead>
                             <tbody>
                             <?php
-                                $staffArray = array(
-                                    array(
-                                        'name' => 'John Doe',
-                                        'role' => 'Chef',
-                                        'email' => 'johndoe@example.com',
-                                        'status' => 'Active'
-                                    ),
-                                    array(
-                                        'name' => 'Jane Smith',
-                                        'role' => 'Waiter',
-                                        'email' => 'janesmith@example.com',
-                                        'status' => 'Deactivated'
-                                    ),
-                                    array(
-                                        'name' => 'Mike Johnson',
-                                        'role' => 'Cashier',
-                                        'email' => 'mikejohnson@example.com',
-                                        'status' => 'Active'
-                                    ),
-                                    array(
-                                        'name' => 'Lisa Anderson',
-                                        'role' => 'Chef',
-                                        'email' => 'lisaanderson@example.com',
-                                        'status' => 'Active'
-                                    ),
-                                    array(
-                                        'name' => 'Robert Green',
-                                        'role' => 'Waiter',
-                                        'email' => 'robertgreen@example.com',
-                                        'status' => 'Deactivated'
-                                    ),
-                                    array(
-                                        'name' => 'Susan Taylor',
-                                        'role' => 'Cashier',
-                                        'email' => 'susantaylor@example.com',
-                                        'status' => 'Active'
-                                    ),
-                                    array(
-                                        'name' => 'William Brown',
-                                        'role' => 'Chef',
-                                        'email' => 'williambrown@example.com',
-                                        'status' => 'Active'
-                                    ),
-                                    array(
-                                        'name' => 'Mary Johnson',
-                                        'role' => 'Waiter',
-                                        'email' => 'maryjohnson@example.com',
-                                        'status' => 'Deactivated'
-                                    ),
-                                    array(
-                                        'name' => 'James Wilson',
-                                        'role' => 'Cashier',
-                                        'email' => 'jameswilson@example.com',
-                                        'status' => 'Active'
-                                    ),
-                                    array(
-                                        'name' => 'Emily Davis',
-                                        'role' => 'Chef',
-                                        'email' => 'emilydavis@example.com',
-                                        'status' => 'Active'
-                                    ),
-                                );
-                            ?>
-                            <?php
+                                require_once '../classes/staff.class.php';
+                                $staff = new Staff();
+                                $staffArray = $staff->show();
                                 $counter = 1;
-                                foreach ($staffArray as $item){
+                                if(isset($staffArray)){
+                                    foreach ($staffArray as $item){
                             ?>
                                 <tr>
                                     <td><?= $counter ?></td>
-                                    <td><?= $item['name'] ?></td>
+                                    <td><?= $item['firstname'] . ' ' . $item['lastname'] ?></td>
                                     <td><?= $item['role'] ?></td>
                                     <td><?= $item['email'] ?></td>
                                     <td><?= $item['status'] ?></td>
                                     <td class="text-center"><a href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
                                 </tr>
                             <?php
-                                    $counter++;
+                                        $counter++;
+                                    }     
                                 }
                             ?>  
                             </tbody>
@@ -142,6 +83,60 @@
             </div>
         </div>
     </main>
+    <!-- Modal -->
+    <div class="modal fade" id="addStaffModal" tabindex="-1" aria-labelledby="addStaffModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addStaffModalLabel">Add Staff Member</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="add_staff.php">
+                        <div class="mb-2">
+                            <label for="firstname" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstname" name="firstname">
+                        </div>
+                        <div class="mb-2">
+                            <label for="lastname" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" name="lastname">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="staff-role" class="form-label">Role</label>
+                            <select name="role" id="role" class="form-select">
+                                <option value="">Select Role</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Staff">Staff</option>
+                                <option value="Cashier">Cashier</option>
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+                        <div class="mb-2">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label class="form-label">Status</label>
+                            <div class="d-flex">
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" id="statusActive" name="status" value="Active">
+                                    <label class="form-check-label" for="statusActive">Active</label>
+                                </div>
+                                <div class="form-check ms-3">
+                                    <input type="radio" class="form-check-input" id="statusDeactivated" name="status" value="Deactivated">
+                                    <label class="form-check-label" for="statusDeactivated">Deactivated</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2 brand-bg-color" id="addStaffButton">Add Staff</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php
         require_once('../include/js.php')
     ?>

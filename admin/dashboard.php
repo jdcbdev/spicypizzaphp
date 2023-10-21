@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
     $title = 'Dashboard';
+    $dashboard_page = 'active';
     require_once('../include/head.php');
 ?>
 <body>

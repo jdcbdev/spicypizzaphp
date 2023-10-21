@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    dataTable = $("#staff").DataTable({
+    dataTable = $("#products").DataTable({
         dom: 'Brtp',
         responsive: true,
         fixedHeader: true,
@@ -53,12 +53,12 @@ $(document).ready(function(){
         return input;
     }
 
-    $('select#staff-role').on('change', function(e){
+    $('select#product-category').on('change', function(e){
         var status = $(this).val();
         dataTable.columns([2]).search(status).draw();
     });
 
-    $('select#staff-status').on('change', function(e){
+    $('select#product-availability').on('change', function(e){
         var status = $(this).val();
         dataTable.columns([4]).search(status).draw();
     });

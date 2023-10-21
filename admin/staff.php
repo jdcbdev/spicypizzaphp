@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
     $title = 'Staff';
+    $staff_page = 'active';
     require_once('../include/head.php');
 ?>
 <body>
@@ -22,13 +23,16 @@
                             <div class="form-group col-12 col-sm-auto flex-sm-grow-1 flex-lg-grow-0 ms-lg-auto">
                                 <select name="staff-role" id="staff-role" class="form-select me-md-2">
                                     <option value="">All Roles</option>
-                                    <option value="Active">Active</option>
-                                    <option value="Deactivated">Deactivated</option>
+                                    <option value="Manager">Manager</option>
+                                    <option value="Staff">Staff</option>
+                                    <option value="Cashier">Cashier</option>
                                 </select>
                             </div>
                             <div class="form-group col-12 col-sm-auto flex-sm-grow-1 flex-lg-grow-0">
                                 <select name="staff-status" id="staff-status" class="form-select me-md-2">
                                     <option value="">All Status</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Deactivated">Deactivated</option>
                                 </select>
                             </div>
                             <div class="search-keyword col-12 flex-lg-grow-0 d-flex">

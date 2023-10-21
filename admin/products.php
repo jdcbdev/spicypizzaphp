@@ -15,7 +15,7 @@
                 <?php
                     require_once('../include/sidepanel.php')
                 ?>
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light">
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <h2 class="h3 brand-color pt-3 pb-2">Products</h2>
                     <div class="table-responsive overflow-hidden">
                         <div class="row g-2 mb-2 m-0">

@@ -15,7 +15,7 @@
                 <?php
                     require_once('../include/sidepanel.php')
                 ?>
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light">
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <h2 class="h3 brand-color pt-3 pb-2">Staff</h2>
                     <div class="table-responsive overflow-hidden">
                         <div class="row g-2 mb-2 m-0">
@@ -43,41 +43,9 @@
                                 <button class="btn btn-outline-secondary btn-add" type="button" data-bs-toggle="modal" data-bs-target="#addStaffModal"><i class="fa fa-plus brand-color" aria-hidden="true"></i></button>
                             </div>
                         </div>
-                        <table id="staff" class="table table-striped table-sm">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Staff Name</th>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col" width="5%">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                                require_once '../classes/staff.class.php';
-                                $staff = new Staff();
-                                $staffArray = $staff->show();
-                                $counter = 1;
-                                if(isset($staffArray)){
-                                    foreach ($staffArray as $item){
-                            ?>
-                                <tr>
-                                    <td><?= $counter ?></td>
-                                    <td><?= $item['firstname'] . ' ' . $item['lastname'] ?></td>
-                                    <td><?= $item['role'] ?></td>
-                                    <td><?= $item['email'] ?></td>
-                                    <td><?= $item['status'] ?></td>
-                                    <td class="text-center"><a href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                                </tr>
-                            <?php
-                                        $counter++;
-                                    }     
-                                }
-                            ?>  
-                            </tbody>
-                        </table>
+                        <div id="table-container">
+                            <!-- The staff data will be loaded here via AJAX -->
+                        </div>
                     </div>
                 </main>
             </div>
@@ -95,11 +63,11 @@
                     <form method="post" action="add_staff.php">
                         <div class="mb-2">
                             <label for="firstname" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="firstname" name="firstname">
+                            <input type="text" class="form-control" id="firstname" name="firstname" required>
                         </div>
                         <div class="mb-2">
                             <label for="lastname" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="lastname" name="lastname">
+                            <input type="text" class="form-control" id="lastname" name="lastname" required>
                         </div>
                         <div class="form-group mb-2">
                             <label for="staff-role" class="form-label">Role</label>
@@ -112,11 +80,11 @@
                         </div>
                         <div class="mb-2">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email">
+                            <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="mb-2">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password">
+                            <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <div class="form-group mb-2">
                             <label class="form-label">Status</label>

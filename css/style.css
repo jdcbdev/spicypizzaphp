@@ -11,6 +11,7 @@
 .brand-bg-color{
     background-color: #D80032 !important;
     color: white !important;
+    border: none;
 }
 
 .brand-bg-color:hover{
@@ -182,6 +183,17 @@ span.tasty{
 
 .page-link:hover{
     color: #F78CA2;
+}
+
+.signup-banner{
+    background-image: url('../img/signupbanner.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.btn-create-account{
+    width: 100%;
 }
 
 @media screen and (min-width: 992px) {

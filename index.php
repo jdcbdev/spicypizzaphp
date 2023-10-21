@@ -1,46 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- The following meta tag defines viewport settings for responsive web design. -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <!-- This is how we add bootstrap, fontawesome and jquery locally. -->
-    <link href="./vendor/bootstrap-5.0.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./vendor/font-awesome-4.7.0/css/font-awesome.min.css"/>
-    <!-- Your custome css goes here -->
-    <link rel="stylesheet" href="./css/style.css">
-</head>
+<?php
+    $title = 'Home';
+    require_once('./include/head.php');
+?>
 <body>
-    <header class="sticky-top landing-page">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="./img/logo1.png" alt="" srcset=""></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mb-2 mb-lg-0 ms-auto me-0">
-                        <li class="nav-item">
-                            <a class="nav-link active"href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Menu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Cart</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-          </nav>
-    </header>
+    <?php
+        require_once('./include/header.user.php');
+    ?>
     <main>
         <section class="banner p-5">
             <h2>The First Spicy Pizza in Town</h2>
@@ -119,9 +86,9 @@
         </section>
         </div>
     </main>
-    <!-- This is how we add bootstrap and jquery locally. -->
-    <script src="./vendor/bootstrap-5.0.2/js/bootstrap.bundle.min.js"></script>
-    <script src="./vendor/jquery-3.7.1/jquery.min.js"></script>
+    <?php
+        require_once('./include/js.php')
+    ?>
     <script src="./js/landing-page.js"></script>
 </body>
 </html>

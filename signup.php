@@ -20,7 +20,7 @@
                             <label for="firstname" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="firstname" name="firstname" value="<?php if(isset($_POST['firstname'])){ echo $_POST['firstname']; } ?>">
                             <?php
-                                if(isset($_POST['firstname']) && !validate_fn($_POST)){
+                                if(isset($_POST['firstname']) && !validate_field($_POST['firstname'])){
                             ?>
                                     <p class="text-danger my-1">Please enter a valid first name</p>
                             <?php
@@ -31,7 +31,7 @@
                             <label for="lastname" class="form-label">Last Name</label>
                             <input type="text" class="form-control" id="lastname" name="lastname" value="<?php if(isset($_POST['lastname'])){ echo $_POST['lastname']; } ?>">
                             <?php
-                                if(isset($_POST['lastname']) && !validate_ln($_POST)){
+                                if(isset($_POST['lastname']) && !validate_field($_POST['lastname'])){
                             ?>
                                     <p class="text-danger my-1">Please enter a valid last name</p>
                             <?php
@@ -42,7 +42,7 @@
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" value="<?php if(isset($_POST['email'])){ echo $_POST['email']; } ?>">
                             <?php
-                                if(isset($_POST['email']) && !validate_email($_POST)){
+                                if(isset($_POST['email']) && !validate_field($_POST['email'])){
                             ?>
                                     <p class="text-danger my-1">Please enter a valid email</p>
                             <?php
@@ -53,9 +53,9 @@
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="password" name="password" value="<?php if(isset($_POST['password'])){ echo $_POST['password']; } ?>">
                             <?php
-                                if(isset($_POST['password']) && !validate_password($_POST)){
+                                if(isset($_POST['password']) && validate_password($_POST['password']) !== "success"){
                             ?>
-                                    <p class="text-danger my-1">Please enter a valid password</p>
+                                    <p class="text-danger my-1"><?= validate_password($_POST['password']) ?></p>
                             <?php
                                 }
                             ?>
@@ -64,7 +64,7 @@
                             <label for="confirmpassword" class="form-label">Confirm Password</label>
                             <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" value="<?php if(isset($_POST['confirmpassword'])){ echo $_POST['confirmpassword']; } ?>">
                             <?php
-                                if(isset($_POST['password']) && isset($_POST['confirmpassword']) && !validate_cpw($_POST)){
+                                if(isset($_POST['password']) && isset($_POST['confirmpassword']) && !validate_cpw($_POST['password'], $_POST['confirmpassword'])){
                             ?>
                                     <p class="text-danger my-1">Your confirm password didn't match</p>
                             <?php

@@ -18,10 +18,10 @@ $(document).ready(function(){
         $.ajax({
             type: "POST",
             url: "add_staff_ajax.php", // PHP script to handle the request
+            dataType: "json",
             data: formData,
             success: function(response) {
-                var responseData = JSON.parse(response);
-                if (responseData.status === "success") {
+                if (response === "success") {
                     // Close the modal
                     $("#addStaffModal").modal("hide");
                     // Perform any other actions (e.g., updating the page)
@@ -35,11 +35,31 @@ $(document).ready(function(){
                     $("input[name='status']:checked").prop( "checked", false );
                 } else {
                     // Display error messages for specific fields
-                    if (responseData.errors) {
-                        // Loop through the error messages and display them
-                        for (var field in responseData.errors) {
-                            $("#" + field + "_error").text(responseData.errors[field]);
-                        }
+                    $('.modal-error').hide();
+                    
+                    if (response.firstname){
+                        $('#firstname_error').text(response.firstname);
+                        $('#firstname_error').show();
+                    }
+                    if (response.lastname){
+                        $('#lastname_error').text(response.lastname);
+                        $('#lastname_error').show();
+                    }
+                    if (response.role){
+                        $('#role_error').text(response.role);
+                        $('#role_error').show();
+                    }
+                    if (response.email){
+                        $('#email_error').text(response.email);
+                        $('#email_error').show();
+                    }
+                    if (response.password){
+                        $('#password_error').text(response.password);
+                        $('#password_error').show();
+                    }
+                    if (response.status){
+                        $('#status_error').text(response.status);
+                        $('#status_error').show();
                     }
                 }
             }

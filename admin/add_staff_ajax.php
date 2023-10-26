@@ -10,37 +10,44 @@
         $role = htmlentities($_POST['role']);
         $email = htmlentities($_POST['email']);
         $password = htmlentities($_POST['password']);
-        $status = htmlentities($_POST['status']);
+        //if status is a radio button
+        if(isset($_POST['status'])){
+            $status = htmlentities($_POST['status']);
+        }else{
+            $status = '';
+        }
 
-        // empty error
-        $error_array = array();
+        // Initialize an error array to store validation errors
+        $error_array = [];
 
         // Validate
-        if (!validate_fn($_POST)) {
+        if (!validate_field($firstname)) {
             $error_array['firstname'] = "Please enter a valid first name";
         }
 
-        if (!validate_ln($_POST)) {
+        if (!validate_field($lastname)) {
             $error_array['lastname'] = "Please enter a valid last name";
         }
 
-        if (!validate_staffrole($_POST)) {
-            $error_array['role'] = "Please select role";
+        if (!validate_field($role)) {
+            $error_array['role'] = "Please select staff role";
         }
 
-        if (!validate_email($_POST)) {
+        if (!validate_email($email)) {
             $error_array['email'] = "Please enter a valid email";
         }
 
-        if (!validate_password($_POST)) {
+        if (!validate_field($password)) {
             $error_array['password'] = "Please enter a valid password";
         }
 
-        if (!validate_staffstatus($_POST)) {
-            $error_array['status'] = "Please select status";
+        if (!validate_field($status)) {
+            $error_array['status'] = "Please select staff status";
         }
 
-         if (empty($error_array)) {
+        header('Content-Type: application/json');
+        
+        if (empty($error_array)) {
             // No validation errors, proceed to add staff
             $staff = new Staff();
             $staff->firstname = $firstname;
@@ -51,13 +58,15 @@
             $staff->status = $status;
 
             if ($staff->add()) {
-                echo json_encode(["status" => "success"]);
+                $message = 'success';
+                echo json_encode($message);
             } else {
-                echo json_encode(["status" => "Failed to add staff."]);
+                $message = 'Failed adding to the database';
+                echo json_encode($message);
             }
         }else{
             // Validation errors occurred, send error messages to JavaScript
-            echo json_encode(["errors" => $error_array]);
+            echo json_encode($error_array);
         }
     }
 

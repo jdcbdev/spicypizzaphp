@@ -68,6 +68,7 @@
                         <div class="mb-2">
                             <label for="lastname" class="form-label">Last Name</label>
                             <input type="text" class="form-control" id="lastname" name="lastname" required>
+                            <p id="lastname_error" class="modal-error text-danger my-1">Your custom error message here</p>
                         </div>
                         <div class="form-group mb-2">
                             <label for="staff-role" class="form-label">Role</label>
@@ -77,14 +78,17 @@
                                 <option value="Staff">Staff</option>
                                 <option value="Cashier">Cashier</option>
                             </select>
+                            <p id="role_error" class="modal-error text-danger my-1">Your custom error message here</p>
                         </div>
                         <div class="mb-2">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" required>
+                            <p id="email_error" class="modal-error text-danger my-1">Your custom error message here</p>
                         </div>
                         <div class="mb-2">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="password" name="password" required>
+                            <p id="password_error" class="modal-error text-danger my-1">Your custom error message here</p>
                         </div>
                         <div class="form-group mb-2">
                             <label class="form-label">Status</label>
@@ -98,6 +102,7 @@
                                     <label class="form-check-label" for="statusDeactivated">Deactivated</label>
                                 </div>
                             </div>
+                            <p id="status_error" class="modal-error text-danger my-1">Your custom error message here</p>
                         </div>
                         <button type="submit" class="btn btn-primary mt-2 brand-bg-color" id="addStaffButton">Add Staff</button>
                     </form>

@@ -1,27 +1,18 @@
 <?php
     
-    function validate_fn($POST){
-        $fn = htmlentities($POST['firstname']);
-        if(strlen(trim($fn))<1){
+    function validate_field($field){
+        $field = htmlentities($field);
+        if(strlen(trim($field))<1){
             return false;
         }else{
             return true;
         }
     }
 
-    function validate_ln($POST){
-        $ln = htmlentities($POST['lastname']);
-        if(strlen(trim($ln))<1){
-            return false;
-        }else{
-            return true;
-        }
-    }
-
-    function validate_email($POST){
+    function validate_email($email){
         // Check if the 'email' key exists in the $_POST array
-        if (isset($POST['email'])) {
-            $email = trim($POST['email']); // Trim whitespace
+        if (isset($email)) {
+            $email = trim($email); // Trim whitespace
     
             // Check if the email is not empty
             if (empty($email)) {
@@ -39,18 +30,21 @@
         }
     }    
 
-    function validate_password($POST){
-        $password = htmlentities($POST['password']);
-        if(strlen(trim($password))<1){
-            return false;
-        }else{
-            return true;
+    function validate_password($password) {
+        $password = htmlentities($password);
+        
+        if (strlen(trim($password)) < 1) {
+            return "Password cannot be empty";
+        } elseif (strlen($password) < 8) {
+            return "Password must be at least 8 characters long";
+        } else {
+            return "success"; // Indicates successful validation
         }
-    }
+    }    
 
-    function validate_cpw($POST){
-        $pw = htmlentities($POST['password']);
-        $cpw = htmlentities($POST['confirmpassword']);
+    function validate_cpw($password, $cpassword){
+        $pw = htmlentities($password);
+        $cpw = htmlentities($cpassword);
         if(strcmp($pw, $cpw) == 0){
             return true;
         }else{
@@ -58,21 +52,4 @@
         }
     }
 
-    function validate_staffrole($POST){
-        $ln = htmlentities($POST['role']);
-        if(strlen(trim($ln))<1){
-            return false;
-        }else{
-            return true;
-        }
-    }
-
-    function validate_staffstatus($POST){
-        $ln = htmlentities($POST['status']);
-        if(strlen(trim($ln))<1){
-            return false;
-        }else{
-            return true;
-        }
-    }
 ?>

@@ -196,6 +196,10 @@ span.tasty{
     width: 100%;
 }
 
+.modal-error{
+    display: none;
+}
+
 @media screen and (min-width: 992px) {
     .search-keyword{
         max-width: 300px;

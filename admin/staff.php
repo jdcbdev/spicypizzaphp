@@ -18,49 +18,33 @@
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <h2 class="h3 brand-color pt-3 pb-2">Staff</h2>
                     <div class="table-responsive overflow-hidden">
-                        <div class="row g-2 mb-2 m-0">
-                            <div id="MyButtons" class="d-flex mb-md-2 mb-lg-0 col-12 col-md-auto"></div>
-                            <div class="form-group col-12 col-sm-auto flex-sm-grow-1 flex-lg-grow-0 ms-lg-auto">
-                                <select name="staff-role" id="staff-role" class="form-select me-md-2">
-                                    <option value="">All Roles</option>
-                                    <option value="Manager">Manager</option>
-                                    <option value="Staff">Staff</option>
-                                    <option value="Cashier">Cashier</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-12 col-sm-auto flex-sm-grow-1 flex-lg-grow-0">
-                                <select name="staff-status" id="staff-status" class="form-select me-md-2">
-                                    <option value="">All Status</option>
-                                    <option value="Active">Active</option>
-                                    <option value="Deactivated">Deactivated</option>
-                                </select>
-                            </div>
-                            <div class="search-keyword col-12 flex-lg-grow-0 d-flex">
-                                <div class="input-group">
-                                    <input type="text" name="keyword" id="keyword" placeholder="Search Staff" class="form-control">
-                                    <button class="btn btn-outline-secondary brand-bg-color" type="button"><i class="fa fa-search color-white" aria-hidden="true"></i></button>
-                                </div>
-                                <button class="btn btn-outline-secondary btn-add" type="button" data-bs-toggle="modal" data-bs-target="#addStaffModal"><i class="fa fa-plus brand-color" aria-hidden="true"></i></button>
-                            </div>
+                    <div class="row g-2 mb-2 m-0">
+                        <div id="MyButtons" class="d-flex mb-md-2 mb-lg-0 col-12 col-md-auto"></div>
+                        <div class="form-group col-12 col-sm-auto flex-sm-grow-1 flex-lg-grow-0 ms-lg-auto">
+                            <select name="staff-role" id="staff-role" class="form-select me-md-2">
+                                <option value="">All Roles</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Staff">Staff</option>
+                                <option value="Cashier">Cashier</option>
+                            </select>
                         </div>
-                        <div id="table-container">
-                        <table id="staff" class="table table-striped table-sm">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Staff Name</th>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col" width="5%">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="staffTableBody">
-                            <!-- The staff data will be loaded here via AJAX -->
-                            </tbody>
-                        </table>
-                            
+                        <div class="form-group col-12 col-sm-auto flex-sm-grow-1 flex-lg-grow-0">
+                            <select name="staff-status" id="staff-status" class="form-select me-md-2">
+                                <option value="">All Status</option>
+                                <option value="Active">Active</option>
+                                <option value="Deactivated">Deactivated</option>
+                            </select>
                         </div>
+                        <div class="search-keyword col-12 flex-lg-grow-0 d-flex">
+                            <div class="input-group">
+                                <input type="text" name="keyword" id="keyword" placeholder="Search Staff" class="form-control">
+                                <button class="btn btn-outline-secondary brand-bg-color" type="button"><i class="fa fa-search color-white" aria-hidden="true"></i></button>
+                            </div>
+                            <button class="btn btn-outline-secondary btn-add" type="button" data-bs-toggle="modal" data-bs-target="#addStaffModal"><i class="fa fa-plus brand-color" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    <div id="table-container">
+                        <!-- The staff data will be loaded here via AJAX -->
                     </div>
                 </main>
             </div>
@@ -75,10 +59,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="add_staff.php">
+                    <form method="post" action="">
                         <div class="mb-2">
                             <label for="firstname" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="firstname" name="firstname" required>
+                            <p id="firstname_error" class="modal-error text-danger my-1">Your custom error message here</p>
                         </div>
                         <div class="mb-2">
                             <label for="lastname" class="form-label">Last Name</label>

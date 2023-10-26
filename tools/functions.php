@@ -58,4 +58,21 @@
         }
     }
 
+    function validate_staffrole($POST){
+        $ln = htmlentities($POST['role']);
+        if(strlen(trim($ln))<1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    function validate_staffstatus($POST){
+        $ln = htmlentities($POST['status']);
+        if(strlen(trim($ln))<1){
+            return false;
+        }else{
+            return true;
+        }
+    }
 ?>

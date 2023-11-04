@@ -200,6 +200,19 @@ span.tasty{
     display: none;
 }
 
+.admin-login-page {
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.signin-banner{
+    background-image: url('../img/signupbanner.jpg');
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 @media screen and (min-width: 992px) {
     .search-keyword{
         max-width: 300px;

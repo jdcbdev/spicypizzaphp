@@ -1,3 +1,34 @@
+<?php
+    
+    require_once './classes/customer.class.php';
+    require_once  './tools/functions.php';
+
+    if(isset($_POST['signup'])){
+
+        $user = new Customer();
+        //sanitize
+        $user->firstname = htmlentities($_POST['firstname']);
+        $user->middlename = htmlentities($_POST['middlename']);
+        $user->lastname = htmlentities($_POST['lastname']);
+        $user->email = htmlentities($_POST['email']);
+        $user->password = htmlentities($_POST['password']);
+
+        //validate
+        if (validate_field($user->firstname) &&
+        validate_field($user->lastname) &&
+        validate_field($user->email) &&
+        validate_field($user->password) &&
+        validate_password($user->password) &&
+        validate_cpw($user->password, $_POST['confirmpassword']) &&
+        validate_email($user->email) && !$user->is_email_exist()){
+            if($user->add()){
+                $message = 'Account successfully created';
+            }else{
+                echo 'An error occured while adding in the database.';
+            }
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -22,10 +53,14 @@
                             <?php
                                 if(isset($_POST['firstname']) && !validate_field($_POST['firstname'])){
                             ?>
-                                    <p class="text-danger my-1">Please enter a valid first name</p>
+                                    <p class="text-danger my-1">First name is required</p>
                             <?php
                                 }
                             ?>
+                        </div>
+                        <div class="mb-3">
+                            <label for="middlename" class="form-label">Middle Name</label>
+                            <input type="text" class="form-control" id="middlename" placeholder="Optional" name="middlename" value="<?php if(isset($_POST['middlename'])){ echo $_POST['middlename']; } ?>">
                         </div>
                         <div class="mb-3">
                             <label for="lastname" class="form-label">Last Name</label>
@@ -33,7 +68,7 @@
                             <?php
                                 if(isset($_POST['lastname']) && !validate_field($_POST['lastname'])){
                             ?>
-                                    <p class="text-danger my-1">Please enter a valid last name</p>
+                                    <p class="text-danger my-1">Last name is required</p>
                             <?php
                                 }
                             ?>
@@ -42,10 +77,17 @@
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" value="<?php if(isset($_POST['email'])){ echo $_POST['email']; } ?>">
                             <?php
-                                if(isset($_POST['email']) && !validate_field($_POST['email'])){
+                                $new_user = new Customer();
+                                $new_user->email = htmlentities($_POST['email']);
+
+                                if(isset($_POST['email']) && strcmp(validate_email($_POST['email']), 'success') != 0){
                             ?>
-                                    <p class="text-danger my-1">Please enter a valid email</p>
+                                    <p class="text-danger my-1"><?php echo validate_email($_POST['email']) ?></p>
                             <?php
+                                }else if ($new_user->is_email_exist() && $_POST['email']){
+                            ?>
+                                    <p class="text-danger my-1">Email already exist</p>
+                            <?php      
                                 }
                             ?>
                         </div>
@@ -72,11 +114,11 @@
                             ?>
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary brand-bg-color btn-create-account">Create account</button>
+                            <button type="submit" name="signup" class="btn btn-primary brand-bg-color btn-create-account">Create account</button>
                         </div>
                     </form>
                     <div class="text-center mt-3">
-                        <p>Already have an account? <a href="signin.php" class="brand-color">Sign in here</a></p>
+                        <p>Already have an account? <a href="signin.php" class="brand-color text-decoration-none">Sign in</a></p>
                     </div>
                 </div>
                 <div class="d-none d-md-flex col-md-6 col-lg-8 ps-4 pt-3">

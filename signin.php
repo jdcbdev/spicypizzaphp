@@ -32,7 +32,7 @@
                         </div>
                     </form>
                     <div class="text-center mt-3">
-                        <p>Don’t have account yet? Sign up here <a href="signup.php" class="brand-color">Sign in here</a></p>
+                        <p>Don’t have account yet? Sign up here <a href="signup.php" class="brand-color text-decoration-none">Sign up</a></p>
                     </div>
                 </div>
                 <div class="d-none d-md-flex col-md-6 col-lg-8 ps-4 pt-3">

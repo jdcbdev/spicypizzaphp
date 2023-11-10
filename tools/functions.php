@@ -13,20 +13,17 @@
         // Check if the 'email' key exists in the $_POST array
         if (isset($email)) {
             $email = trim($email); // Trim whitespace
-    
             // Check if the email is not empty
             if (empty($email)) {
-                return false;
-            } else {
+                return 'Email is required';
+            } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 // Check if the email has a valid format
-                if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    return true; // Email is valid
-                } else {
-                    return false; // Email is not valid
-                }
+                return 'Email is invalid format';
+            } else {
+                return 'success';
             }
         } else {
-            return false; // 'email' key doesn't exist in $_POST
+            return 'Email is required'; // 'email' key doesn't exist in $_POST
         }
     }    
 

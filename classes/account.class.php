@@ -16,7 +16,7 @@ class Account{
     }
 
     function sign_in_staff(){
-        $sql = "SELECT * FROM staff WHERE BINARY email = :email LIMIT 1;";
+        $sql = "SELECT * FROM staff WHERE BINARY email = :email and status ='Active' LIMIT 1;";
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':email', $this->email);
     

@@ -85,6 +85,18 @@ Class Staff{
         }
         return $data;
     }
+
+    function is_email_exist(){
+        $sql = "SELECT * FROM staff WHERE email = :email;";
+        $query=$this->db->connect()->prepare($sql);
+        $query->bindParam(':email', $this->email);
+        if($query->execute()){
+            if($query->rowCount()>0){
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 ?>

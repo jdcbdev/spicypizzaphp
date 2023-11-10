@@ -115,7 +115,11 @@
                                 <input type="email" class="form-control" id="email" name="email" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>">
                                 <?php
                                     $new_staff = new Staff();
-                                    $new_staff->email = htmlentities($_POST['email']);
+                                    if(isset($_POST['email'])){
+                                         $new_staff->email = htmlentities($_POST['email']);
+                                    }else{
+                                         $new_staff->email = '';
+                                    }
 
                                     if(isset($_POST['email']) && strcmp(validate_email($_POST['email']), 'success') != 0){
                                 ?>

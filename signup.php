@@ -43,7 +43,16 @@
     <main>
         <section class="p-3 p-md-5">
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">      
+                <div class="col-12 col-md-6 col-lg-4">
+                <?php
+                    if(isset($_POST['signup']) && isset($message)){
+                ?>
+                        <div class="alert alert-success my-1 mb-3 text-center" role="alert">
+                            <?= $message ?>
+                        </div>
+                <?php
+                    }
+                ?> 
                     <h1 class="h2 brand-color">Create an account</h1>
                     <h2 class="h6 mb-3">Sign up to order your favorite pizza.</h2>
                     <form action="" method="post">
@@ -77,8 +86,12 @@
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" value="<?php if(isset($_POST['email'])){ echo $_POST['email']; } ?>">
                             <?php
-                                $new_user = new Customer();
-                                $new_user->email = htmlentities($_POST['email']);
+                               $new_user = new Customer();
+                               if(isset($_POST['email'])){
+                                    $new_user->email = htmlentities($_POST['email']);
+                               }else{
+                                    $new_user->email = '';
+                               }
 
                                 if(isset($_POST['email']) && strcmp(validate_email($_POST['email']), 'success') != 0){
                             ?>

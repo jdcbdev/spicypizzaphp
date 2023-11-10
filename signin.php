@@ -1,3 +1,31 @@
+<?php
+    //resume session here to fetch session values
+    session_start();
+    /*
+        if user is login then redirect to authenticated page
+    */
+    if (isset($_SESSION['user']) && $_SESSION['user'] == 'customer'){
+        header('location: ./index.php');
+    }
+
+    //if the login button is clicked
+    require_once('./classes/account.class.php');
+    
+    if (isset($_POST['login'])) {
+        $account = new Account();
+        $account->email = htmlentities($_POST['email']);
+        $account->password = htmlentities($_POST['password']);
+        if ($account->sign_in_customer()){
+            $_SESSION['user'] = 'customer';
+            header('location: ./index.php');
+        }else{
+            $error =  'Invalid email/password. Try again.';
+        }
+    }
+    
+    //if the above code is false then html below will be displayed
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -28,8 +56,15 @@
                             <p class="text-end"><a href="">Forgot Password?</a></p>
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary brand-bg-color btn-create-account">Login</button>
+                            <button type="submit" name="login" class="btn btn-primary brand-bg-color btn-create-account">Login</button>
                         </div>
+                        <?php
+                        if (isset($_POST['login']) && isset($error)){
+                        ?>
+                            <p class="text-danger mt-3 text-center"><?= $error ?></p>
+                        <?php
+                        }
+                        ?>
                     </form>
                     <div class="text-center mt-3">
                         <p>Don’t have account yet? Sign up here <a href="signup.php" class="brand-color text-decoration-none">Sign up</a></p>

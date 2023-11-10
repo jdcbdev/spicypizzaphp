@@ -2,9 +2,7 @@
     //resume session here to fetch session values
     session_start();
     /*
-        if user is not login then redirect to login page,
-        this is to prevent users from accessing pages that requires
-        authentication such as the dashboard
+        if user is login then redirect to dashboard page
     */
     if (isset($_SESSION['user']) && $_SESSION['user'] == 'staff'){
         header('location: ./dashboard.php');

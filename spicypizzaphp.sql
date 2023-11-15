@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2023 at 04:34 PM
+-- Generation Time: Nov 15, 2023 at 04:44 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -48,6 +48,31 @@ INSERT INTO `customer` (`id`, `firstname`, `middlename`, `lastname`, `email`, `p
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `productname` varchar(255) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `availability` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `productname`, `category`, `price`, `availability`, `created_at`, `updated_at`) VALUES
+(1, 'Sample Pizza', 'Pizza', '299.50', 'In Stock', '2023-11-15 15:06:50', '2023-11-15 15:06:50'),
+(2, 'Pizza One', 'Pizza', '200.50', 'Out of Stock', '2023-11-15 15:22:53', '2023-11-15 15:33:24'),
+(3, 'Margarita', 'Drinks', '100.00', 'In Stock', '2023-11-15 15:23:25', '2023-11-15 15:33:35');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `staff`
 --
 
@@ -82,6 +107,12 @@ ALTER TABLE `customer`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `staff`
 --
 ALTER TABLE `staff`
@@ -97,6 +128,12 @@ ALTER TABLE `staff`
 --
 ALTER TABLE `customer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `staff`

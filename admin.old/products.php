@@ -6,7 +6,7 @@
         this is to prevent users from accessing pages that requires
         authentication such as the dashboard
     */
-    if (!isset($_SESSION['user']) || $_SESSION['user'] != 'staff'){
+    if (!isset($_SESSION['user']) || $_SESSION['user'] != 'employee'){
         header('location: ./index.php');
     }
     //if the above code is false then html below will be displayed

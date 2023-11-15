@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= $product_page ?>" href="products.php">
+                <a class="nav-link <?= $product_page ?>" href="">
                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                     Products
                 </a>

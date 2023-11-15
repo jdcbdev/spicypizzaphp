@@ -4,7 +4,7 @@
     /*
         if user is login then redirect to dashboard page
     */
-    if (isset($_SESSION['user']) && $_SESSION['user'] == 'staff'){
+    if (isset($_SESSION['user']) && $_SESSION['user'] == 'employee'){
         header('location: ./dashboard.php');
     }
 
@@ -16,7 +16,7 @@
         $account->email = htmlentities($_POST['email']);
         $account->password = htmlentities($_POST['password']);
         if ($account->sign_in_staff()){
-            $_SESSION['user'] = 'staff';
+            $_SESSION['user'] = 'employee';
             header('location: ./dashboard.php');
         }else{
             $error =  'Invalid email/password. Try again.';

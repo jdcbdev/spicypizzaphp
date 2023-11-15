@@ -65,7 +65,7 @@
                                         <td><?= $item['role'] ?></td>
                                         <td><?= $item['email'] ?></td>
                                         <td><?= $item['status'] ?></td>
-                                        <td class="text-center"><a href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                        <td class="text-center"><a href="editstaff.php?id=<?= $item['id'] ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
                                     </tr>
                         <?php
                                     $counter++;

@@ -45,16 +45,13 @@ Class Staff{
     }
 
     function edit(){
-        $sql = "UPDATE staff SET firstname=:firstname, lastname=:lastname, role=:role, email=:email, password=:password, status=:status WHERE id = :id;";
+        $sql = "UPDATE staff SET firstname=:firstname, lastname=:lastname, role=:role, email=:email, status=:status WHERE id = :id;";
 
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':firstname', $this->firstname);
         $query->bindParam(':lastname', $this->lastname);
         $query->bindParam(':role', $this->role);
         $query->bindParam(':email', $this->email);
-        // Hash the password securely using password_hash
-        $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
-        $query->bindParam(':password', $hashedPassword);
         $query->bindParam(':status', $this->status);
         $query->bindParam(':id', $this->id);
         

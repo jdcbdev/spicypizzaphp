@@ -14,17 +14,30 @@
         header('location: ./index.php');
     }
     
+    if(isset($_GET['id'])){
+        $staff = new Staff();
+        $record = $staff->fetch($_GET['id']);
+        $staff->firstname = $record['firstname'];
+        $staff->lastname = $record['lastname'];
+        $staff->role = $record['role'];
+        $staff->email = $record['email'];
+        $staff->status = $record['status'];
+        // this will be used to check if the old email is also the same with the current email
+        // subsequently, this is use to check if the email already exist
+        $old_email = $staff->email;
+    }
+
     //if the above code is false then html below will be displayed
 
     if(isset($_POST['save'])){
 
         $staff = new Staff();
         //sanitize
+        $staff->id = $_GET['id'];
         $staff->firstname = htmlentities($_POST['firstname']);
         $staff->lastname = htmlentities($_POST['lastname']);
         $staff->role = htmlentities($_POST['role']);
         $staff->email = htmlentities($_POST['email']);
-        $staff->password = htmlentities($_POST['password']);
         if(isset($_POST['status'])){
             $staff->status = htmlentities($_POST['status']);
         }else{
@@ -36,11 +49,11 @@
         validate_field($staff->lastname) &&
         validate_field($staff->role) &&
         validate_field($staff->email) &&
-        validate_field($staff->password) &&
         validate_field($staff->status) &&
-        validate_password($staff->password) &&
-        validate_email($staff->email) == 'success' && !$staff->is_email_exist()){
-            if($staff->add()){
+        //validate if email is a valid format
+        validate_email($staff->email) == 'success' &&
+        !($staff->is_email_exist() && $old_email != $staff->email)){
+            if($staff->edit()){
                 header('location: staff.php');
             }else{
                 echo 'An error occured while adding in the database.';
@@ -51,7 +64,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    $title = 'Add Staff';
+    $title = 'Edit Staff';
     $staff_page = 'active';
     require_once('../include/head.php');
 ?>
@@ -67,14 +80,14 @@
                 ?>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <div class="col-12 col-lg-6 d-flex justify-content-between align-items-center">
-                        <h2 class="h3 brand-color pt-3 pb-2">Add Staff</h2>
+                        <h2 class="h3 brand-color pt-3 pb-2">Edit Staff</h2>
                         <a href="staff.php" class="text-primary text-decoration-none"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
                     </div>
                     <div class="col-12 col-lg-6">
                         <form method="post" action="">
                             <div class="mb-2">
                                 <label for="firstname" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstname" name="firstname" required value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } ?>">
+                                <input type="text" class="form-control" id="firstname" name="firstname" required value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; } else if(isset($staff->firstname)){ echo $staff->firstname; } ?>">
                                 <?php
                                     if(isset($_POST['firstname']) && !validate_field($_POST['firstname'])){
                                 ?>
@@ -85,7 +98,7 @@
                             </div>
                             <div class="mb-2">
                                 <label for="lastname" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastname" name="lastname" required value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } ?>">
+                                <input type="text" class="form-control" id="lastname" name="lastname" required value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; } else if(isset($staff->lastname)){ echo $staff->lastname; } ?>">
                                 <?php
                                     if(isset($_POST['lastname']) && !validate_field($_POST['lastname'])){
                                 ?>
@@ -98,9 +111,9 @@
                                 <label for="staff-role" class="form-label">Role</label>
                                 <select name="role" id="role" class="form-select">
                                     <option value="">Select Role</option>
-                                    <option value="Manager" <?php if(isset($_POST['role']) && $_POST['role'] == 'Manager') { echo 'selected'; } ?>>Manager</option>
-                                    <option value="Staff" <?php if(isset($_POST['role']) && $_POST['role'] == 'Staff') { echo 'selected'; } ?>>Staff</option>
-                                    <option value="Cashier" <?php if(isset($_POST['role']) && $_POST['role'] == 'Cashier') { echo 'selected'; } ?>>Cashier</option>
+                                    <option value="Manager" <?php if(isset($_POST['role']) && $_POST['role'] == 'Manager') { echo 'selected'; } else if(isset($staff->role) && $staff->role == 'Manager'){ echo 'selected'; } ?>>Manager</option>
+                                    <option value="Staff" <?php if(isset($_POST['role']) && $_POST['role'] == 'Staff') { echo 'selected'; } else if(isset($staff->role) && $staff->role == 'Staff'){ echo 'selected'; } ?>>Staff</option>
+                                    <option value="Cashier" <?php if(isset($_POST['role']) && $_POST['role'] == 'Cashier') { echo 'selected'; } else if(isset($staff->role) && $staff->role == 'Cashier'){ echo 'selected'; } ?>>Cashier</option>
                                 </select>
                                 <?php
                                     if(isset($_POST['role']) && !validate_field($_POST['role'])){
@@ -112,7 +125,7 @@
                             </div>
                             <div class="mb-2">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } ?>">
+                                <input type="email" class="form-control" id="email" name="email" required value="<?php if(isset($_POST['email'])) { echo $_POST['email']; } else if(isset($staff->email)){ echo $staff->email; } ?>">
                                 <?php
                                     $new_staff = new Staff();
                                     if(isset($_POST['email'])){
@@ -125,21 +138,10 @@
                                 ?>
                                         <p class="text-danger my-1"><?php echo validate_email($_POST['email']) ?></p>
                                 <?php
-                                    }else if ($new_staff->is_email_exist() && $_POST['email']){
+                                    }else if ($new_staff->is_email_exist() && $_POST['email'] && $old_email != $staff->email){
                                 ?>
                                         <p class="text-danger my-1">Email already exist</p>
                                 <?php      
-                                    }
-                                ?>
-                            </div>
-                            <div class="mb-2">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required value="<?php if(isset($_POST['password'])) { echo $_POST['password']; } ?>">
-                                <?php
-                                    if(isset($_POST['password']) && strcmp(validate_password($_POST['password']), 'success') != 0){
-                                ?>
-                                        <p class="text-danger my-1"><?php echo validate_password($_POST['password']) ?></p>
-                                <?php
                                     }
                                 ?>
                             </div>
@@ -147,11 +149,11 @@
                                 <label class="form-label">Status</label>
                                 <div class="d-flex">
                                     <div class="form-check">
-                                        <input type="radio" class="form-check-input" id="statusActive" name="status" value="Active" <?php if(isset($_POST['status']) && $_POST['status'] == 'Active') { echo 'checked'; } ?>>
+                                        <input type="radio" class="form-check-input" id="statusActive" name="status" value="Active" <?php if(isset($_POST['status']) && $_POST['status'] == 'Active') { echo 'checked'; } else if(isset($staff->status) && $staff->status == 'Active'){ echo 'checked'; } ?>>
                                         <label class="form-check-label" for="statusActive">Active</label>
                                     </div>
                                     <div class="form-check ms-3">
-                                        <input type="radio" class="form-check-input" id="statusDeactivated" name="status" value="Deactivated" <?php if(isset($_POST['status']) && $_POST['status'] == 'Deactivated') { echo 'checked'; } ?>>
+                                        <input type="radio" class="form-check-input" id="statusDeactivated" name="status" value="Deactivated" <?php if(isset($_POST['status']) && $_POST['status'] == 'Deactivated') { echo 'checked'; } else if(isset($staff->status) && $staff->status == 'Deactivated'){ echo 'checked'; } ?>>
                                         <label class="form-check-label" for="statusDeactivated">Deactivated</label>
                                     </div>
                                 </div>
